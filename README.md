@@ -4,6 +4,7 @@
 This Node.js application in the command-line allows users to generate simple logos for their projects. Users can input text, choose text color, select a shape (circle, triangle, or square), and choose the shape's color. The application then makes an SVG file named `logo.svg` based on the user's input.
 
 ## Table of Contents
+
 - [Features] (#features)
 - [Installation](#installation)
 - [Usage](#usage)
