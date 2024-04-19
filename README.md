@@ -114,6 +114,6 @@ Thank you for taking the time to contribute to the SVG Logo Generator! Your effo
 
 ## License
 
-This project is made available under the [MIT License](LICENSE.md). The MIT License is a permissive license that is short and to the point. It lets people do almost anything they want with your project, like making and distributing closed source versions.
+This project is made available under the [MIT License](LICENSE). The MIT License is a permissive license that is short and to the point. It lets people do almost anything they want with your project, like making and distributing closed source versions.
 
-For more details, see the [LICENSE.md](LICENSE.md) file included with this project.
+For more details, see the [LICENSE.md](LICENSE) file included with this project.
