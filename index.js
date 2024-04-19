@@ -83,14 +83,14 @@ function generateLogo(userInput) {
     const svg = generateSVG(userInput, shape); 
     console.log(svg);
 
-    // Save SVG to file
+    // Saves SVG as a file. 
     saveSVGToFile(svg);
   } catch (error) {
     console.error('Error during SVG being generated.', error.message); 
   }
 }
 
-// Function to generate SVG string based on user input
+// Function that generates SVG string based on user input
 function generateSVG(userInput, shape) {
   try {
     // SVG attributes (width and height)
