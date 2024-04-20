@@ -5,7 +5,7 @@ This Node.js application in the command-line allows users to generate simple log
 
 ## Table of Contents
 
-- [Features] (#features)
+- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Tests](#tests)
