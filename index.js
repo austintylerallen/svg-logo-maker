@@ -21,7 +21,7 @@ async function getUserInput() {
       {
         type: 'input',
         name: 'textColor',
-        message: 'Enter a hex-code or a simple color.',
+        message: 'Enter a hex-code or a simple color for your text.',
         validate: (input) => {
           return true; 
         }
@@ -155,3 +155,4 @@ module.exports = {
   run
 };
 
+run()

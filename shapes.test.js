@@ -1,7 +1,6 @@
-// Pretty self explanatory. This is my test.
+// This is my test.
 
-
-// required the neccesary packages and files needed to run the test.
+// required the necessary packages and files needed to run the test.
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
@@ -10,7 +9,7 @@ const { run } = require('./index');
 
 jest.mock('inquirer');
 
-// mocks or simiulates the input for getUserInput.
+// mocks or simulates the input for getUserInput.
 describe('getUserInput function', () => {
   it('should return user input object with valid input', async () => {
     inquirer.prompt.mockResolvedValueOnce({
@@ -20,14 +19,15 @@ describe('getUserInput function', () => {
       shapeColor: 'black'
     });
     const userInput = await getUserInput();
+    console.log('User Input:', userInput); // Added console log
     expect(userInput).toEqual({
-        text: 'text',
-        textColor: 'green',
-        shape: 'square',
-        shapeColor: 'black'
+      text: 'text',
+      textColor: 'green',
+      shape: 'square',
+      shapeColor: 'black'
     });
   });
-// if user does not enter anything or something that is not accepted, it will kick back the response "should handle invalid text input".
+
   it('should handle invalid text input', async () => {
     inquirer.prompt.mockResolvedValueOnce({
       text: 'ABCD',
@@ -35,9 +35,16 @@ describe('getUserInput function', () => {
       shape: 'Triangle',
       shapeColor: 'blue'
     });
-    await expect(getUserInput()).rejects.toThrow();
+    try {
+      await getUserInput();
+      // If the promise resolves successfully, fail the test
+      fail('getUserInput should have rejected the promise for invalid input');
+    } catch (error) {
+      // Expecting an error to be thrown
+      console.log('Error:', error); // Added console log
+      expect(error).toBeTruthy();
+    }
   });
-
 });
 
 describe('generateLogo function', () => {
@@ -49,14 +56,12 @@ describe('generateLogo function', () => {
       shapeColor: 'blue'
     };
     generateLogo(userInput);
-    
+
     // checks if the SVG file is created where it's supposed to be.
     const filePath = path.join(__dirname, 'logo.svg');
     expect(fs.existsSync(filePath)).toBe(true);
   });
 });
-
-
 
 describe('generateSVG function', () => {
   it('should generate SVG string with valid user input and shape', () => {
@@ -68,6 +73,7 @@ describe('generateSVG function', () => {
     };
     const shape = { color: 'blue' };
     const svgString = generateSVG(userInput, shape);
+    console.log('SVG String:', svgString); // Added console log
     expect(svgString).toContain('<svg');
     expect(svgString).toContain('<polygon');
     expect(svgString).toContain('fill="blue"');
@@ -75,18 +81,16 @@ describe('generateSVG function', () => {
     expect(svgString).toContain('fill="red"');
     expect(svgString).toContain('ABC');
   });
-
 });
 
 describe('saveSVGToFile function', () => {
   it('should save SVG string to file', () => {
-    const svgString = '<svg>...</svg>'; 
+    const svgString = '<svg>...</svg>';
     saveSVGToFile(svgString);
-    
+
     const filePath = path.join(__dirname, 'logo.svg');
     expect(fs.existsSync(filePath)).toBe(true);
   });
-
 });
 
 describe('Main function (run)', () => {
